@@ -34,6 +34,11 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->post('/Register', 'Auth::Register');
 $routes->post('/Login', 'Auth::Login');
+$routes->post('/addType', 'WithAuth::addType');
+$routes->post('/sellItem', 'WithAuth::sellItem');
+$routes->post('/addCart', 'WithAuth::addCart');
+$routes->post('/buyItem', 'WithAuth::buyItem');
+
 
 /*
  * --------------------------------------------------------------------

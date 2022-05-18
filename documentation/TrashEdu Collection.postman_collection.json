@@ -38,6 +38,140 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "addType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4NzQxODIsImlhdCI6MTY1Mjg3MDU4MiwiZGF0YSI6eyJpZCI6IjMifX0.cIkcIidYvLDGEzHALHJct89h7ANYpYOdjzquUZqCiZ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipe",
+							"value": "kertas",
+							"type": "text"
+						},
+						{
+							"key": "deskripsi",
+							"value": "merupakan sampah jenis kertas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/addType",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4MTA1OTQsImlhdCI6MTY1MjgwNjk5NCwiZGF0YSI6eyJpZCI6IjMifX0.Hr14\\o7SbAYIgHtjCTcJfetg-FXkz27P4BGtegd4fg3c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/trashedu/public/WithAuth/coba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"trashedu",
+						"public",
+						"WithAuth",
+						"coba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sell",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4MTA1OTQsImlhdCI6MTY1MjgwNjk5NCwiZGF0YSI6eyJpZCI6IjMifX0.Hr14o7SbAYIgHtjCTcJfetg-FXkz27P4BGtegd4fg3c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/sellItem",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sellItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/addCart",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buyItem",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buyItem"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2022 at 08:42 PM
+-- Generation Time: May 18, 2022 at 04:52 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -34,9 +34,18 @@ CREATE TABLE `beli` (
   `beli_norumah` int(11) NOT NULL,
   `beli_kodepos` varchar(10) NOT NULL,
   `beli_alamat` varchar(255) NOT NULL,
+  `beli_kuantitas` int(11) DEFAULT NULL,
   `beli_harga` int(11) NOT NULL,
   `beli_waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `beli`
+--
+
+INSERT INTO `beli` (`beli_id`, `user_id`, `item_id`, `beli_norumah`, `beli_kodepos`, `beli_alamat`, `beli_kuantitas`, `beli_harga`, `beli_waktu`) VALUES
+(3, 3, 13, 100, '12312', 'jl oke gresik', 2, 0, '0000-00-00 00:00:00'),
+(4, 3, 13, 100, '12312', 'jl oke gresik', 2, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -46,7 +55,9 @@ CREATE TABLE `beli` (
 
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `item_name` varchar(255) NOT NULL,
+  `item_filename` varchar(255) NOT NULL,
   `item_price` int(11) DEFAULT NULL,
   `item_address` varchar(255) NOT NULL,
   `item_stok` int(11) NOT NULL,
@@ -54,6 +65,15 @@ CREATE TABLE `item` (
   `item_createdat` datetime NOT NULL DEFAULT current_timestamp(),
   `item_updatedat` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `user_id`, `item_name`, `item_filename`, `item_price`, `item_address`, `item_stok`, `item_opsipengiriman`, `item_createdat`, `item_updatedat`) VALUES
+(13, 3, 'asd', '1652880376_6003ef4fb2f8853c7143.png', 12, 'asd', 123, 'asd', '2022-05-18 20:26:16', '2022-05-18 20:26:16'),
+(14, 3, 'asd', '1652880388_203c2dfa4f7fb7e7209c.png', 12, 'asd', 123, 'asd', '2022-05-18 20:26:28', '2022-05-18 20:26:28'),
+(15, 3, 'asd', '1652880560_67acacf0c5bc9fa2eb93.png', 12, 'asd', 123, 'asd', '2022-05-18 20:29:20', '2022-05-18 20:29:20');
 
 -- --------------------------------------------------------
 
@@ -68,6 +88,14 @@ CREATE TABLE `keranjang` (
   `keranjang_kuantitas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`keranjang_id`, `user_id`, `item_id`, `keranjang_kuantitas`) VALUES
+(1, 3, 13, 2),
+(2, 3, 13, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +108,14 @@ CREATE TABLE `tipe` (
   `tipe_deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tipe`
+--
+
+INSERT INTO `tipe` (`tipe_id`, `tipe_nama`, `tipe_deskripsi`) VALUES
+(1, 'plastik', 'merupakan sampah jenis plastik'),
+(2, 'kertas', 'merupakan sampah jenis kertas');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +127,14 @@ CREATE TABLE `tipe_item` (
   `item_id` int(11) NOT NULL,
   `tipe_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tipe_item`
+--
+
+INSERT INTO `tipe_item` (`tipe_item_id`, `item_id`, `tipe_id`) VALUES
+(1, 13, 2),
+(2, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -123,19 +167,24 @@ INSERT INTO `user` (`user_id`, `user_namadepan`, `user_namabelakang`, `user_user
 -- Indexes for table `beli`
 --
 ALTER TABLE `beli`
-  ADD PRIMARY KEY (`beli_id`);
+  ADD PRIMARY KEY (`beli_id`),
+  ADD KEY `FK_user_id` (`user_id`),
+  ADD KEY `FK_item_id` (`item_id`);
 
 --
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `FK_item_to_user_id` (`user_id`);
 
 --
 -- Indexes for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  ADD PRIMARY KEY (`keranjang_id`);
+  ADD PRIMARY KEY (`keranjang_id`),
+  ADD KEY `FK_keranjang_to_user_id` (`user_id`),
+  ADD KEY `FK_keranjang_to_item_id` (`item_id`);
 
 --
 -- Indexes for table `tipe`
@@ -147,7 +196,9 @@ ALTER TABLE `tipe`
 -- Indexes for table `tipe_item`
 --
 ALTER TABLE `tipe_item`
-  ADD PRIMARY KEY (`tipe_item_id`);
+  ADD PRIMARY KEY (`tipe_item_id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `tipe_id` (`tipe_id`);
 
 --
 -- Indexes for table `user`
@@ -163,37 +214,68 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `beli`
 --
 ALTER TABLE `beli`
-  MODIFY `beli_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `beli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tipe`
 --
 ALTER TABLE `tipe`
-  MODIFY `tipe_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tipe_item`
 --
 ALTER TABLE `tipe_item`
-  MODIFY `tipe_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipe_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `beli`
+--
+ALTER TABLE `beli`
+  ADD CONSTRAINT `FK_item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `item`
+--
+ALTER TABLE `item`
+  ADD CONSTRAINT `FK_item_to_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD CONSTRAINT `FK_keranjang_to_item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_keranjang_to_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tipe_item`
+--
+ALTER TABLE `tipe_item`
+  ADD CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tipe_id` FOREIGN KEY (`tipe_id`) REFERENCES `tipe` (`tipe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

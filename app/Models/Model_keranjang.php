@@ -35,5 +35,16 @@ class Model_keranjang extends Model
             'numeric' => 'field ini harus diisi dengan angka'
         ]
     ];
-
+    function getAllDataWhere($where, $whering)
+    {
+        //return "nbisa";
+        $builder = $this->table('keranjang');
+        $builder->select("*");
+        $builder->where($where, $whering);
+        $data = $builder->findAll();
+        if (empty($data)) {
+            return "data tidak ada";
+        }
+        return $data;
+    }
 }

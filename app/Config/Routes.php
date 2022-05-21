@@ -38,7 +38,9 @@ $routes->post('/addType', 'WithAuth::addType');
 $routes->post('/sellItem', 'WithAuth::sellItem');
 $routes->post('/addCart', 'WithAuth::addCart');
 $routes->post('/buyItem', 'WithAuth::buyItem');
-
+$routes->get('/all_item', 'WithAuth::all_item');
+$routes->get('/history_beli', 'WithAuth::history_beli');
+$routes->get('/see_cart', 'WithAuth::see_cart');
 
 /*
  * --------------------------------------------------------------------

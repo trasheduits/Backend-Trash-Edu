@@ -308,6 +308,28 @@ class WithAuth extends BaseController
         return $this->respond($response);
     }
 
+    public function all_item()
+    {
+        $data = $this->modelItem->orderBy('item_id', 'asc')->findAll();
+        return $this->respond($data, 200);
+    }
+
+    public function history_beli()
+    {
+        $token_data = getJWTdata($this->request->getHeader("Authorization")->getValue());
+        $data = $this->modelBeli->getAllDataWhere('user_id', ((array)$token_data['data'])['id']);
+        //echo ((array)$token_data['data'])['id'];
+        return $this->respond($data, 200);
+    }
+
+    public function see_cart()
+    {
+        $token_data = getJWTdata($this->request->getHeader("Authorization")->getValue());
+        $data = $this->modelKeranjang->getAllDataWhere('user_id', ((array)$token_data['data'])['id']);
+        //echo ((array)$token_data['data'])['id'];
+        return $this->respond($data, 200);
+    }
+
     public function coba()
     {
         //echo getenv("JWT_SECRET_KEY");

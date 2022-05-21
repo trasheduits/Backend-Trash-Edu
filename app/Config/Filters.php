@@ -72,7 +72,10 @@ class Filters extends BaseConfig
                 'addType',
                 'sellItem',
                 'addCart',
-                'buyItem'
+                'buyItem',
+                'all_item',
+                'history_beli',
+                'see_cart'
             ]
         ],
     ];

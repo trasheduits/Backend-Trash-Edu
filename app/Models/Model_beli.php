@@ -54,4 +54,15 @@ class Model_beli extends Model
         ],
     ];
 
+    function getAllDataWhere($where, $whering)
+    {
+        $builder = $this->table('beli');
+        $builder->select("*");
+        $builder->where($where, $whering);
+        $data = $builder->findAll();
+        if (empty($data)) {
+            return "data tidak ada";
+        }
+        return $data;
+    }
 }

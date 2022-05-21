@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "72ef57f5-cfc7-46d7-8288-a452ebafc7cb",
 		"name": "TrashEdu Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20759372"
 	},
 	"item": [
 		{
@@ -10,6 +11,36 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama_depan",
+							"value": "ab",
+							"type": "text"
+						},
+						{
+							"key": "nama_belakang",
+							"value": "ab",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ab",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asdb",
+							"type": "text"
+						},
+						{
+							"key": "confirm_password",
+							"value": "asdb",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "{{base_url}}/Register",
 					"host": [
@@ -27,6 +58,21 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "ab",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asdb",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "{{base_url}}/Login",
 					"host": [
@@ -47,7 +93,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4NzQxODIsImlhdCI6MTY1Mjg3MDU4MiwiZGF0YSI6eyJpZCI6IjMifX0.cIkcIidYvLDGEzHALHJct89h7ANYpYOdjzquUZqCiZ0",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4NzU2ODIsImlhdCI6MTY1Mjg3MjA4MiwiZGF0YSI6eyJpZCI6IjMifX0.K-Z9QXNfHmHNChX0QMCVtMNuvxD4z3A6Ot8HGjYa7IE",
 							"type": "string"
 						}
 					]
@@ -82,37 +128,6 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4MTA1OTQsImlhdCI6MTY1MjgwNjk5NCwiZGF0YSI6eyJpZCI6IjMifX0.Hr14\\o7SbAYIgHtjCTcJfetg-FXkz27P4BGtegd4fg3c",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost/trashedu/public/WithAuth/coba",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"trashedu",
-						"public",
-						"WithAuth",
-						"coba"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "sell",
 			"request": {
 				"auth": {
@@ -120,13 +135,64 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4MTA1OTQsImlhdCI6MTY1MjgwNjk5NCwiZGF0YSI6eyJpZCI6IjMifX0.Hr14o7SbAYIgHtjCTcJfetg-FXkz27P4BGtegd4fg3c",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4ODM5NDIsImlhdCI6MTY1Mjg4MDM0MiwiZGF0YSI6eyJpZCI6IjMifX0.ld9FBKlpX9RkXnHSt0q61o0TeQZr10HeescYNzaa1Y0",
 							"type": "string"
 						}
 					]
 				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama_barang",
+							"value": "asd",
+							"type": "text"
+						},
+						{
+							"key": "file_barang",
+							"type": "file",
+							"src": "/C:/Users/Lenovo/Pictures/Screenshots/aAAAAAAAAAAAAAAAAAAAAAAA (2).png"
+						},
+						{
+							"key": "harga",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "alamat",
+							"value": "asd",
+							"type": "text"
+						},
+						{
+							"key": "opsi_pengiriman",
+							"value": "asd",
+							"type": "text"
+						},
+						{
+							"key": "stok",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "tipe[0]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "tipe[1]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "tipe[]",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
 				"url": {
 					"raw": "{{base_url}}/sellItem",
 					"host": [
@@ -142,8 +208,33 @@
 		{
 			"name": "addCart",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4ODM5NDIsImlhdCI6MTY1Mjg4MDM0MiwiZGF0YSI6eyJpZCI6IjMifX0.ld9FBKlpX9RkXnHSt0q61o0TeQZr10HeescYNzaa1Y0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "item_id",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "kuantitas",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "{{base_url}}/addCart",
 					"host": [
@@ -159,8 +250,48 @@
 		{
 			"name": "Buy",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI4ODM5NDIsImlhdCI6MTY1Mjg4MDM0MiwiZGF0YSI6eyJpZCI6IjMifX0.ld9FBKlpX9RkXnHSt0q61o0TeQZr10HeescYNzaa1Y0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "item_id",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "kuantitas",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "norumah",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "kodepos",
+							"value": "12312",
+							"type": "text"
+						},
+						{
+							"key": "alamat",
+							"value": "jl oke gresik",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "{{base_url}}/buyItem",
 					"host": [
@@ -176,24 +307,81 @@
 		{
 			"name": "all_item",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTMxMTE2MzIsImlhdCI6MTY1MzEwODAzMiwiZGF0YSI6eyJpZCI6IjMifX0.MDg-FznrwRUnJducQhvBYXY8taYJ7TE5koiKsgAII9E",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/all_item",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"all_item"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "history_beli",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTMxNTk0MzIsImlhdCI6MTY1MzE1NTgzMiwiZGF0YSI6eyJpZCI6IjMifX0.TIKlQCp6MfvXtrIFxvlKPy4EKdn8V6xGcQBq5UZJENA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/history_beli",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"history_beli"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "see_cart",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTMxNTk0MzIsImlhdCI6MTY1MzE1NTgzMiwiZGF0YSI6eyJpZCI6IjMifX0.TIKlQCp6MfvXtrIFxvlKPy4EKdn8V6xGcQBq5UZJENA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/see_cart",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"see_cart"
+					]
+				}
 			},
 			"response": []
 		}

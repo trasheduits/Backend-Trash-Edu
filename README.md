@@ -9,6 +9,19 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/codeigniter4/CodeIgniter4/pulls)
 <br>
 
+## Tutorial
+
+1. pull dulu repo ini
+2. trus composer init di directory CI4
+3. Nyalain xampp dan import db nya
+4. trus gunakan postman untuk ngecek API nya
+
+## documentation
+
+https://documenter.getpostman.com/view/20759372/Uz59QLPy (juga ada tutorial ngefetcH)
+
+
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
